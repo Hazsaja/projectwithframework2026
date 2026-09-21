@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,67 +32,44 @@ Route::get('/home', function(){
 });
 
 Route::get('/about', function(){
-    return '<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About</title>
-        <style>
-
-            th{
-                text-align: center;
-            }
-
-            td{
-                text-align: left;
-            }
-
-            #gambar{
-                width: 180px; 
-                height: 220px;
-                border-radius: 50%;
-            }
-
-            .margin{
-                margin-bottom: 30px;
-            }
-
-            #wawancara.margin{
-                margin-top: 30px;
-            }
-
-        </style>
-    </head>
-    <body background="img/background.jpg">
-        <h1>About Me</h1>
-
-        <img src="img/foto1.jpeg" alt="myPicture" id="gambar">
-
-        
-        <table border="1" style="width: 30%;">
-            <tr>
-                <th>Nama</th>
-                <td>Hazel Muhammad Naufal Ribawa</td>
-            </tr>
-            <tr>
-                <th>Tempat, Tanggal Lahir</th>
-                <td>Kota Bekasi, 24 Oktober 2005</td>
-            </tr>
-            <tr>
-                <th>Pendidikan</th>
-                <td>S1 Informatika</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>hazel.ribawa@gmail.com</td>
-            </tr>
-            <tr>
-                <th>Telepon</th>
-                <td>0787-5501-4341</td>
-            </tr>
-        </table><br>
-
-    </body>
-    </html>';
+    return view('about');
 });
+
+Route::get('/login', [LoginController::class, 'create'])
+    ->middleware('guest')
+    ->name('login');
+
+Route::post(  '/login', [LoginController::class, 'store'])
+    ->middleware('guest')
+    ->name('login.store');
+
+Route::post('/logout', [LoginController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('logout');      
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('products', ProductController::class);
+    Route::get('/reports/sales', [ReportController::class, 'sales'])->name('report.sales');
+    Route::get('/pos', [PosController::class, 'index'])->name('pos.index');
+    Route::post('/pos', [PosController::class, 'store'])->name('pos.store');
+    Route::resource('users', UserController::class);
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('products', ProductController::class);
+    Route::get('/reports/sales', [ReportController::class, 'sales'])->name('report.sales');
+});
+
+Route::middleware(['auth', 'role:kasir'])->group(function(){
+    Route::get('/history', [HistoryController::class, 'history'])->name('history.index');
+});
+
+Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
+    Route::get('/pos', [PosController::class, 'index'])->name('pos.index');
+    Route::post('/pos', [PosController::class, 'store'])->name('pos.store');
+});
+
+
+
