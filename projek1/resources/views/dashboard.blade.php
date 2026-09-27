@@ -1,4 +1,6 @@
 
+use app/
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
@@ -9,6 +11,12 @@
             <x-card>
                 <h3 class="text-lg font-semibold mb-2">Ringkasan Hari Ini</h3>
                 <p class="text-gray-600">Selamat datang, {{ auth()->user()->name }}.</p>
+                <x-badge color="red">habis</x-badge>
+                <x-badge color="red">full</x-badge>
+                <x-badge color="red">Sedikti</x-badge>
+                @php
+                    $products = Product::with('category')->get();
+                @endphp
             </x-card>
         </div>
     </div>
