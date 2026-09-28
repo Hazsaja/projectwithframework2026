@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 
-
+// php artisan make:controller Auth/LoginController
 class LoginController extends Controller
 {
        public function create(): View

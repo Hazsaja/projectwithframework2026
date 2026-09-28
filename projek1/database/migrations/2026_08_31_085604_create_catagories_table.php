@@ -4,6 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
+//php artisan make:migration create_categories_table
+// php artisan migrate
+
 return new class extends Migration
 {
     /**

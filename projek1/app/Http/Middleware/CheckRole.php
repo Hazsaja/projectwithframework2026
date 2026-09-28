@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
  
+//php artisan make:middleware CheckRole
 class CheckRole
 {
     public function handle(Request $request, Closure $next, string ...$roles): Response

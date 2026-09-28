@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
+// php artisan make:migration add_role_to_users_table --table=users
 return new class extends Migration
 {
     /**

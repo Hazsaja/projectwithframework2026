@@ -6,6 +6,10 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 
+
+// php artisan make:seeder CategorySeeder
+// php artisan db:seed --class=CategorySeeder
+
 class CategorySeeder extends Seeder
 {
     /**

@@ -7,6 +7,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;    
 
+
+//php artisan migrate:fresh --seed
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
