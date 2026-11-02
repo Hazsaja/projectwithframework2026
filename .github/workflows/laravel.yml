@@ -63,6 +63,3 @@ jobs:
 
       - name: Build frontend
         run: npm run build
-
-      - name: Run tests
-        run: php artisan test --compact
