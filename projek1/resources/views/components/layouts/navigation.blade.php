@@ -4,32 +4,32 @@
         <div class="flex justify-between h-16 items-center">
             <div class="flex space-x-6">
                 <a href="{{ route('dashboard') }}"
-                    class="font-semibold {{ request()->routeIs('dashboard') ? 'text-indigo-600' : 'text-gray-700' }}">
+                    class="font-semibold {{ request()->routeIs('dashboard') ? 'text-indigo-600' : 'text-gray-700' }} hover:text-indigo-600 transition-colors duration-150">
                     Dashboard
                 </a>
  
                 @if (auth()->user()->role === 'admin')
                     <a href="{{ route('categories.index') }}"
-                        class="{{ request()->routeIs('categories.*') ? 'text-indigo-600' : 'text-gray-500' }}">
+                        class="{{ request()->routeIs('categories.*') ? 'text-indigo-600' : 'text-gray-500' }} hover:text-indigo-600 transition-colors duration-150">
                         Kategori
                     </a>
                     <a href="{{ route('products.index') }}"
-                        class="{{ request()->routeIs('products.*') ? 'text-indigo-600' : 'text-gray-500' }}">
+                        class="{{ request()->routeIs('products.*') ? 'text-indigo-600' : 'text-gray-500' }} hover:text-indigo-600 transition-colors duration-150">
                         Produk
                     </a>
                     <a href="{{ route('report.sales') }}"
-                        class="{{ request()->routeIs('report.sales') ? 'text-indigo-600' : 'text-gray-500' }}">
+                        class="{{ request()->routeIs('report.sales') ? 'text-indigo-600' : 'text-gray-500' }} hover:text-indigo-600 transition-colors duration-150">
                         Laporan
                     </a>
                 @endif
  
                 <a href="{{ route('pos.index') }}"
-                    class="{{ request()->routeIs('pos.index') ? 'text-indigo-600' : 'text-gray-500' }}">
+                    class="{{ request()->routeIs('pos.index') ? 'text-indigo-600' : 'text-gray-500' }} hover:text-indigo-600 transition-colors duration-150">
                     Transaksi
                 </a>
 
                 <a href="{{ route('history.index') }}"
-                    class="{{ request()->routeIs('history.index') ? 'text-indigo-600' : 'text-gray-500' }}">
+                    class="{{ request()->routeIs('history.index') ? 'text-indigo-600' : 'text-gray-500' }} hover:text-indigo-600 transition-colors duration-150">
                     Riwayat Transaksi
                 </a>
             </div>
