@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   tests:
-    name: Tests (PHP 8.3)
+    name: Tests (PHP 8.5.14)
     runs-on: ubuntu-latest
 
     defaults:
