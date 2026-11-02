@@ -71,5 +71,6 @@ Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
     Route::post('/pos', [PosController::class, 'store'])->name('pos.store');
 });
 
+Route::resource('categories', CategoryController::class);
 
 
